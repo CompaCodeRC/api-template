@@ -4,4 +4,4 @@ import './databases/mongodb';
 import config from './config';
 app.listen(config.PORT);
 
-console.log('Servidor conectado');
+console.log(`Server running on port ${config.PORT}`);
