@@ -1,7 +1,7 @@
 {
   "name": "api-template",
   "version": "1.0.0",
-  "description": "Backend with express, mongodb, jwt",
+  "description": "",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
