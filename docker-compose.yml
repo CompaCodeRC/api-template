@@ -1,0 +1,27 @@
+version: "2.13"
+services:
+  app:
+    build: .
+    ports:
+      - "3015:3000"
+    links:
+      - db
+    networks:
+      - mi_red
+    volumes:
+      - .:/home/app
+      - /home/app/node_modules
+  db:
+    image: mongo
+    ports:
+      - "27017"
+    networks:
+      - mi_red
+    volumes:
+      - db_data:/data/db
+
+networks:
+  mi_red:
+
+volumes:
+  db_data:

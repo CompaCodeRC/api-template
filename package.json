@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "dev": "node --experimental-modules --es-module-specifier-resolution=node src",
+    "dev": "set PORT=3015 & node --experimental-modules --es-module-specifier-resolution=node src",
     "start": "node --experimental-modules --es-module-specifier-resolution=node src"
   },
   "dependencies": {
