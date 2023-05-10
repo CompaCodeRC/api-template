@@ -1,5 +1,7 @@
 import app from './app';
 import './databases/mongodb';
+import './install';
+import './cronjobs';
 
 import config from './config';
 console.log('port', process.env.PORT);
