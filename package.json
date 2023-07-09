@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "set PORT=3015 & node --experimental-modules --es-module-specifier-resolution=node src",
+    "linux": "export PORT=3015; node --experimental-modules --es-module-specifier-resolution=node src",
     "start": "node --experimental-modules --es-module-specifier-resolution=node src"
   },
   "dependencies": {
@@ -15,6 +16,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.3.6",
     "morgan": "^1.10.0",
+    "multer": "1.4.5-lts.1",
     "node-cron": "^3.0.2"
   }
 }
