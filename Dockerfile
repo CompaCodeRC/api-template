@@ -6,6 +6,8 @@ WORKDIR /home/app
 
 COPY package.json /home/app
 
+RUN test -d /home/app/node_modules || npx playwright install-deps
+
 RUN test -d /home/app/node_modules || npm install
 
 EXPOSE 3000
