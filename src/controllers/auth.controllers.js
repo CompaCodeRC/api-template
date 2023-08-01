@@ -7,15 +7,15 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
 
     const check_user = await User.findOne({ email });
-    if (!check_user) return res.status(400).json({ message: 'User not found' });
+    if (!check_user) return res.status(400).json({ message: 'Datos incorrectos' });
 
     const check_password = await User.comparePassword(password, check_user.password);
-    if (!check_password) return res.status(400).json({ message: 'Password is incorrect' });
+    if (!check_password) return res.status(400).json({ message: 'Datos incorrectos' });
 
     const token = jwt.sign({ id: check_user._id }, config.SECRET, { expiresIn: 86400 });
 
     res.status(200).json({
-        message: 'Login success',
+        message: 'Accedió correctamente',
         token,
         user: {
             id: check_user._id,
@@ -31,10 +31,10 @@ export const login = async (req, res) => {
 
 export const register = async (req, res) => {
     const { username, email, password } = req.body;
-    if (!username || !email || !password) return res.status(400).json({ message: 'Please fill all fields' });
+    if (!username || !email || !password) return res.status(400).json({ message: 'Por favor llene todos los campos' });
 
     const check_user = await User.findOne({ email });
-    if (check_user) return res.status(400).json({ message: 'User already exists' });
+    if (check_user) return res.status(400).json({ message: 'El usuario ya existe' });
 
     const ip_address = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     const country = req.headers['x-country-code'];
@@ -48,5 +48,5 @@ export const register = async (req, res) => {
     });
     await user.save();
 
-    res.status(200).json({ message: 'Register success' });
+    res.status(200).json({ message: 'Registro exitoso' });
 }
