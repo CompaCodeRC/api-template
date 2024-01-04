@@ -2,17 +2,16 @@ import jwt from 'jsonwebtoken';
 import config from '../config';
 import User from '../models/User';
 
-const verify_token = async (req, res, next) => {
+const VerifyToken = async (req, res, next) => {
     try {
         const token = req.headers["x-access-token"];
-
-        if (!token) return res.status(403).json({ message: "No se encontro el token" });
+        if (!token) return res.status(403).json({ message: "Usuario desconocido" });
 
         const decode_token = jwt.verify(token, config.SECRET);
-        req.userId = decode_token.id;
 
-        const user = await User.findById(req.userId, {password: 0});
-        if (!user) return res.status(404).json({ message: "No se encontro el usuario" });
+        const user_db = await User.findById(decode_token.id, {password: 0});
+        if (!user_db) return res.status(404).json({ message: "Usuario desconocido" });
+        res.locals.user = user_db;
 
         next();
     } catch (err) {
@@ -20,4 +19,4 @@ const verify_token = async (req, res, next) => {
     }
 }
 
-export default verify_token;
+export default VerifyToken;

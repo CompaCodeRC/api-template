@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:20
 
 RUN mkdir -p /home/app
 
@@ -12,4 +12,4 @@ RUN test -d /home/app/node_modules || npm install
 
 EXPOSE 3000
 
-CMD [ "npm", "run", "start" ]
+CMD [ "npm", "run", "production" ]

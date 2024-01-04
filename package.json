@@ -5,9 +5,9 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "dev": "set PORT=3015 & node --experimental-modules --es-module-specifier-resolution=node src",
-    "linux": "export PORT=3015; node --experimental-modules --es-module-specifier-resolution=node src",
-    "start": "node --experimental-modules --es-module-specifier-resolution=node src"
+    "dev": "set PORT=3015 & node --import=extensionless/register src",
+    "linux": "export PORT=3015; node --import=extensionless/register src",
+    "production": "node --import=extensionless/register src"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -19,5 +19,8 @@
     "multer": "1.4.5-lts.1",
     "node-cron": "^3.0.2",
     "playwright": "1.31.2"
+  },
+  "devDependencies": {
+    "extensionless": "^1.9.6"
   }
 }
